@@ -1,0 +1,15 @@
+{
+    "irc": {
+        "nick": "sumobot",
+        "server": "irc.mozilla.org",
+        "port": "6697",
+        "ssl": true,
+        "channels": ["#sumobotdev"]
+    },
+
+    "logs": {
+        "stdout": false,
+        "log": false,
+        "file": "bot.logs"
+    }
+}
