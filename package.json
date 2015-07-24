@@ -1,0 +1,14 @@
+{
+  "name": "sumoday-bot",
+  "version": "0.0.1",
+  "description": "SuMo bot",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/mozilla/sumoday-bot.git"
+  },
+  "license": "MPL",
+  "dependencies": {
+    "irc": "~0.3.12"
+  }
+}
