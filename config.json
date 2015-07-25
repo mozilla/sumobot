@@ -11,5 +11,10 @@
         "stdout": false,
         "log": true,
         "file": "bot.logs"
+    },
+
+    "bot": {
+        "database": "data.db",
+        "welcomemessage": "Hi! this is an automatic message."
     }
 }

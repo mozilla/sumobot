@@ -9,6 +9,7 @@
   },
   "license": "MPL",
   "dependencies": {
-    "irc": "~0.3.12"
+    "irc": "~0.3.12",
+    "sqlite3": "~3.0.9"
   }
 }
