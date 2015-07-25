@@ -16,5 +16,14 @@
     "bot": {
         "database": "data.db",
         "welcomemessage": "Hi! this is an automatic message."
+    },
+
+    "twitter": {
+        "api": ""
+    },
+
+     "feeds": {
+        "watch": ["http://blog.mozilla.org/sumo/feed/", "http://blog.mozillabrasil.org.br/feed/"],
+        "channels": ["#sumobotdev", "sam"]
     }
 }
