@@ -9,7 +9,7 @@
 
     "logs": {
         "stdout": false,
-        "log": false,
+        "log": true,
         "file": "bot.logs"
     }
 }
