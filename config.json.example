@@ -1,0 +1,31 @@
+{
+    "irc": {
+        "nick": "sumobot",
+        "server": "irc.mozilla.org",
+        "port": "6697",
+        "ssl": true,
+        "channels": ["#sumobotdev"]
+    },
+
+    "logs": {
+        "stdout": false,
+        "log": true,
+        "file": "bot.logs"
+    },
+
+    "bot": {
+        "database": "data.db",
+        "staticSumoDate": "2015-07-16",
+        "welcomemessagesumoday": "Hi! this is an automatic message for sumo day.",
+        "welcomemessagekb": "Hi! this is an automatic message for kb."
+    },
+
+    "twitter": {
+        "api": ""
+    },
+
+     "feeds": {
+        "watch": ["http://blog.mozilla.org/sumo/feed/", "http://blog.mozillabrasil.org.br/feed/"],
+        "channels": ["#sumobotdev", "sam"]
+    }
+}

@@ -3,3 +3,6 @@ node_modules/
 
 # Bot database
 data.db
+
+# Bot config file
+config.json
