@@ -1,6 +1,7 @@
 var fs = require('fs'),
     irc = require('irc'),
     http = require('http'),
+    https = require('https'),
     crypto = require('crypto'),
     twitter = require('twitter'),
     sqlite3 = require('sqlite3'),
@@ -71,7 +72,7 @@ function checkFeed() {
 
     config.feeds.watch.forEach(function (feedurl) {
 
-        var request = http.request(feedurl, function (res) {
+        var request = https.request(feedurl, function (res) {
 
             var data = '';
 
