@@ -173,6 +173,11 @@ client.addListener('message', function(from, to, message) {
         client.say(to, "reply");
     }
 
+    if (message.search('[!:]help') >= 0) {
+        client.say(to, "Available commands: !command")
+        client.say(to, "!command: return \"reply\'")
+    }
+
 });
 
 // Join
