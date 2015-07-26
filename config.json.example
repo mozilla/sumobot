@@ -4,9 +4,9 @@
         "server": "irc.mozilla.org",
         "port": "6697",
         "ssl": true,
-        "channels": ["#sumobotdev"],
+        "channels": ["#sumo"],
         "realname": "SuMo Bot",
-        "password": "mypassword"
+        "password": ""
     },
 
     "logs": {
@@ -23,7 +23,7 @@
     },
 
     "twitter": {
-        "channels": ["#sumobotdev", "sam"],
+        "channels": ["#sumo"],
         "consumerkey": "",
         "consumersecret": "",
         "accesstokenkey": "",
@@ -31,7 +31,7 @@
     },
 
      "feeds": {
-        "watch": ["http://blog.mozilla.org/sumo/feed/", "http://blog.mozillabrasil.org.br/feed/"],
-        "channels": ["#sumobotdev", "sam"]
+        "watch": ["https://blog.mozilla.org/sumo/feed/", "https://support.mozilla.org/en-US/questions/feed", "https://discourse.mozilla-community.org/c/sumo.rss"],
+        "channels": ["#sumo"]
     }
 }
