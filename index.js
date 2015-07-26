@@ -197,13 +197,19 @@ function checkTwitter() {
 // Messages
 client.addListener('message', function(from, to, message) {
 
-    if (message.search('[!:]command') >= 0) {
-        client.say(to, "reply");
-    }
+    console.log(from);
 
-    if (message.search('[!:]help') >= 0) {
-        client.say(to, "Available commands: !command")
-        client.say(to, "!command: return \"reply\'")
+    if (from != "firebot") {
+
+        if (message.search('[!:]command') >= 0) {
+            client.say(to, "reply");
+        }
+
+        if (message.search('[!:]help') >= 0) {
+            client.say(to, "Available commands: !command")
+            client.say(to, "!command: return \"reply\'")
+        }
+
     }
 
 });
