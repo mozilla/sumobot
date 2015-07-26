@@ -7,6 +7,9 @@ var fs = require('fs'),
     parsexml = require('xml2js').parseString,
     db = new sqlite3.Database(config.bot.database);
 
+// Default Timezone
+process.env.TZ = 'GMT'
+
 var options = {
         channels: config.irc.channels,
         autoRejoin: true,
@@ -16,8 +19,10 @@ var options = {
 
 // Setup database if not exists
 if (!fs.existsSync(config.bot.database)) {
+
     db.run("CREATE TABLE notified (id INTEGER PRIMARY KEY AUTOINCREMENT, nick TEXT UNIQUE)");
     db.run("CREATE TABLE feed (id INTEGER PRIMARY KEY AUTOINCREMENT, post TEXT UNIQUE)");
+
 }
 
 // Connect to IRC Server
@@ -121,13 +126,39 @@ client.addListener('message', function(from, to, message) {
 // Join
 client.addListener('join', function(channel, nick, message) {
 
-    if (nick != config.irc.nick) {
+    var today = new Date();
+
+    if ((nick != config.irc.nick) && (today.getDay() == 4)) {
 
         db.get("SELECT id FROM notified WHERE notified.nick = '" + nick + "'", function (err, row) {
 
             if (row == undefined) {
 
-                client.say(nick, config.bot.welcomemessage);
+                var sumoday = false;
+                var staticSumoDate = new Date(config.bot.staticSumoDate);
+
+                while (staticSumoDate < today) {
+
+                    staticSumoDate.setDate(staticSumoDate.getDate() + 14);
+
+                }
+
+                if (staticSumoDate.toDateString() == today.toDateString()) {
+
+                    sumoday = true;
+
+                }
+
+                if (sumoday) {
+
+                    client.say(nick, config.bot.welcomemessagesumoday);
+
+                } else {
+
+                    client.say(nick, config.bot.welcomemessagekb);
+
+                }
+
                 addNick(nick);
 
             }

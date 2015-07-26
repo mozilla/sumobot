@@ -15,7 +15,9 @@
 
     "bot": {
         "database": "data.db",
-        "welcomemessage": "Hi! this is an automatic message."
+        "staticSumoDate": "2015-07-16",
+        "welcomemessagesumoday": "Hi! this is an automatic message for sumo day.",
+        "welcomemessagekb": "Hi! this is an automatic message for kb."
     },
 
     "twitter": {
