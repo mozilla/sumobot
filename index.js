@@ -13,8 +13,15 @@ process.env.TZ = 'GMT'
 var options = {
         channels: config.irc.channels,
         autoRejoin: true,
+        autoConnect: true,
+        sasl: true,
+        password: config.irc.password,
+        stripColors: true,
         port: config.irc.port,
-        secure: config.irc.ssl
+        secure: config.irc.ssl,
+        userName: config.irc.nick,
+        realName: config.irc.realname,
+        floodProtection: false
     };
 
 // Setup database if not exists

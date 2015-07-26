@@ -4,7 +4,9 @@
         "server": "irc.mozilla.org",
         "port": "6697",
         "ssl": true,
-        "channels": ["#sumobotdev"]
+        "channels": ["#sumobotdev"],
+        "realname": "SuMo Bot",
+        "password": "mypassword"
     },
 
     "logs": {
