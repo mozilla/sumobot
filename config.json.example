@@ -23,7 +23,11 @@
     },
 
     "twitter": {
-        "api": ""
+        "channels": ["#sumobotdev", "sam"],
+        "consumerkey": "",
+        "consumersecret": "",
+        "accesstokenkey": "",
+        "accesstokensecret": ""
     },
 
      "feeds": {

@@ -2,6 +2,7 @@ var fs = require('fs'),
     irc = require('irc'),
     http = require('http'),
     crypto = require('crypto'),
+    twitter = require('twitter'),
     sqlite3 = require('sqlite3'),
     config = require('./config'),
     parsexml = require('xml2js').parseString,
@@ -29,6 +30,7 @@ if (!fs.existsSync(config.bot.database)) {
 
     db.run("CREATE TABLE notified (id INTEGER PRIMARY KEY AUTOINCREMENT, nick TEXT UNIQUE)");
     db.run("CREATE TABLE feed (id INTEGER PRIMARY KEY AUTOINCREMENT, post TEXT UNIQUE)");
+    db.run("CREATE TABLE twitter (id INTEGER PRIMARY KEY AUTOINCREMENT, post TEXT UNIQUE)");
 
 }
 
@@ -121,6 +123,48 @@ function checkFeed() {
 
 }
 
+var twitterclient = new twitter({
+        consumer_key: config.twitter.consumerkey,
+        consumer_secret: config.twitter.consumersecret,
+        access_token_key: config.twitter.accesstokenkey,
+        access_token_secret: config.twitter.accesstokensecret
+    });
+
+// Update Twitter
+function checkTwitter() {
+
+    twitterclient.get('statuses/user_timeline', {count: 10, screen_name: "sumo_mozilla"}, function(error, tweets, response){
+
+        if (error) {
+
+            log(error);
+
+        }
+
+        tweets.forEach(function(tweet){
+
+            db.get("SELECT id FROM twitter WHERE twitter.post = '" + tweet.id + "'", function (err, row) {
+
+                if (row == undefined) {
+
+                    config.twitter.channels.forEach(function (channel) {
+
+                        client.say(channel, tweet.user.screen_name + ": " + tweet.text);
+
+                    });
+
+                    addPost(tweet.id, "twitter");
+
+                }
+
+            });
+
+        });
+
+    });
+
+}
+
 // Messages
 client.addListener('message', function(from, to, message) {
 
@@ -194,13 +238,15 @@ client.addListener('nick', function(oldnick, newnick, channels, message) {
 // Errors
 client.addListener('error', function(message) {
 
-    console.log('Error: ', message);
+    log('Error: ', message);
 
 });
 
 // Update feeds
 client.addListener('registered', function (message) {
 
-    setInterval(checkFeed, 30 * 1000);
+    // Check every 15 minutes
+    setInterval(checkFeed, 900 * 1000);
+    setInterval(checkTwitter, 900 * 1000);
 
 });
