@@ -86,13 +86,41 @@ function checkFeed() {
 
                 parsexml(data, function (err, result) {
 
-                    var feedname = result.rss.channel[0].title;
+                    if (result.rss != undefined) {
 
-                    result.rss.channel[0].item.forEach(function(post){
+                        var feedname = result.rss.channel[0].title[0];
 
-                        var date = new Date(post.pubDate);
+                        var items = result.rss.channel[0].item;
 
-                        var md5 = crypto.createHash('md5').update(date + post.title).digest('hex');
+                        var atom = false;
+
+                    } else if (result.feed != undefined) {
+
+                        var feedname = result.feed.title[0];
+
+                        var items = result.feed.entry;
+
+                        var atom = true;
+
+                    }
+
+                    items.forEach(function(post){
+
+                        if (atom) {
+
+                            var date = new Date(post.published[0])
+
+                            var link = result.feed.entry[0].link[0].$.href;
+
+                        } else {
+
+                            var date = new Date(post.pubDate[0]);
+
+                            var link = post.link[0];
+
+                        }
+
+                        var md5 = crypto.createHash('md5').update(date + post.title[0]).digest('hex');
 
                         db.get("SELECT id FROM feed WHERE feed.post = '" + md5 + "'", function (err, row) {
 
@@ -100,7 +128,7 @@ function checkFeed() {
 
                                 config.feeds.channels.forEach(function (channel) {
 
-                                    client.say(channel, "New post on " + feedname + ": " + post.title + " <" + post.link + ">");
+                                    client.say(channel, "New post on " + feedname + ": " + post.title[0] + " <" + link + ">");
 
                                 });
 
