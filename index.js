@@ -1,6 +1,5 @@
 var fs = require('fs'),
     irc = require('irc'),
-    http = require('http'),
     https = require('https'),
     crypto = require('crypto'),
     twitter = require('twitter'),
