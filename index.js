@@ -203,6 +203,10 @@ client.addListener('message', function(from, to, message) {
         if (message.search('[!:]command') >= 0) {
             client.say(to, "reply");
         }
+        
+        if (message.search('[!:]kbdashboard') >= 0){
+            client.say(to, "help us improve the knowledge base. visit https://support.mozilla.org/en-US/contributors/kb-overview for a list of articles that need updates");
+        }
 
         if (message.search('[!:]help') >= 0) {
             client.say(to, "Available commands: !command")
