@@ -203,7 +203,7 @@ client.addListener('message', function(from, to, message) {
         }
 
         if (message.search('[!:]dev') >= 0){
-            client.say(to, " You can reach the SuMo developers at #sumodev or by filling a bug at http://mzl.la/1SVRbVQ");
+            client.say(to, from + ": You can reach the SuMo developers at #sumodev or by filling a bug at http://mzl.la/1SVRbVQ");
         }
 
         if (message.search('[!:]kbdashboard') >= 0){
