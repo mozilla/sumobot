@@ -196,8 +196,6 @@ function checkTwitter() {
 // Messages
 client.addListener('message', function(from, to, message) {
 
-    console.log(from);
-
     if (from != "firebot") {
 
         if (message.search('[!:]command') >= 0) {
@@ -205,7 +203,13 @@ client.addListener('message', function(from, to, message) {
         }
         
         if (message.search('[!:]kbdashboard') >= 0){
-            client.say(to, "help us improve the knowledge base. visit https://support.mozilla.org/en-US/contributors/kb-overview for a list of articles that need updates");
+            client.say(to, from + ": help us improve the knowledge base. visit https://support.mozilla.org/en-US/contributors/kb-overview for a list of articles that need updates");
+        }
+
+        if (message.search('[!:]yahoo') >= 0){
+            var command = message.split(" ");
+            command.shift()
+            client.say(to, from + ": https://yahoo.com/search?p=" + encodeURIComponent(command.join(" ")))
         }
 
         if (message.search('[!:]help') >= 0) {
