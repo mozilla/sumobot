@@ -219,7 +219,15 @@ client.addListener('message', function(from, to, message) {
         if (message.search('[!:]help') >= 0) {
             client.say(to, "Available commands: !command")
             client.say(to, "!command: return \"reply\'")
-        }
+        } 
+
+        if (message.search('[!:]ping') >= 0){
+            client.say(to, from + ": pong");
+        } 
+
+        if (message.search('[!:]admins') >= 0){
+            client.say(to, from + ": The SuMo admins are as follows Topal, vesper|, guigs, jsavage, Tyler, rolandtanglao, madalina,");
+
 
     }
 
