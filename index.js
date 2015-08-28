@@ -227,6 +227,10 @@ client.addListener('message', function(from, to, message) {
 
         if (message.search('[!:]admins') >= 0){
             client.say(to, from + ": The SuMo admins are as follows Topal, vesper|, guigs, jsavage, Tyler, rolandtanglao, madalina,");
+        } 
+
+        if (message.search('[!:]l10n') >= 0){
+            client.say(to, from + ": Please read the following https://support.mozilla.org/kb/localize-mozilla-support/ or contact Vesper for any urgant requests,");
 
 
     }
