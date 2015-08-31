@@ -239,6 +239,10 @@ client.addListener('message', function(from, to, message) {
 
         if (message.search('[!:]twitter') >= 0){
             client.say(to, from + ": The SuMo Twiiter can is at the following url https://twitter.com/sumo_mozilla ");
+        }
+
+        if (message.search('[!:]source') >= 0){
+            client.say(to, from + ": You can get the bots code at https://github.com/mozilla/sumobot");
 
 
 
