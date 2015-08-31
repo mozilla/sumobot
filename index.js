@@ -231,6 +231,15 @@ client.addListener('message', function(from, to, message) {
 
         if (message.search('[!:]l10n') >= 0){
             client.say(to, from + ": Please read the following https://support.mozilla.org/kb/localize-mozilla-support/ or contact Vesper for any urgant requests,");
+        } 
+
+        if (message.search('[!:]youtube') >= 0){
+            client.say(to, from + ": The SuMo YouTube channel can be found on http://mzl.la/SuMoYT ");
+        } 
+
+        if (message.search('[!:]twitter') >= 0){
+            client.say(to, from + ": The SuMo Twiiter can is at the following url https://twitter.com/sumo_mozilla ");
+
 
 
     }
